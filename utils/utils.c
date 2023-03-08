@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "utils.h"
+#include "./utils.h"
 
 void printTable(int** table, int rowSize, int colSize) {
     for (int row = 0; row < rowSize; row++) {
