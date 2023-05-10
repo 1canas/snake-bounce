@@ -13,7 +13,7 @@ int isOnTableLimit(int positionX, int positionY);
 int kbhit();
 
 int main(void) {
-    int keyBind = 0, isOnLimit = 0, snakeChar = 219, viewChar = 32, foodChar = 206;
+    int keyBind = 0, sleepTime = 100000, isOnLimit = 0, snakeChar = 219, viewChar = 32, foodChar = 206;
     int snakeXLimit = 1, snakeYLimit = 1, snakeYPosition = 10, snakeXPosition = 10, foodXPosition, foodYPosition; 
     int snakeSize = 2, foodBool = 0, tailCount = 0, snakeTailX[2000], snakeTailY[2000];
 
@@ -74,7 +74,7 @@ int main(void) {
         table[snakeYPosition][snakeXPosition] = snakeChar;
         table[snakeYLimit][snakeXLimit] = viewChar;
 
-        usleep(110000);
+        usleep(sleepTime);
 
         system("clear");
     }
@@ -138,8 +138,6 @@ void printTable(int** table, int rowSize, int colSize) {
 
 int kbhit() {
     struct termios oldt, newt;
-    int ch;
-    int oldf;
     fd_set readfds;
 
     tcgetattr(STDIN_FILENO, &oldt);
