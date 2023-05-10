@@ -1,16 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
+#include <sys/select.h>
+#include <termios.h>
+#include <unistd.h>
+#include <fcntl.h>
 
-#include "./utils/utils.h"
-
-void mountTable(int** table);
 int** allocateTable();
+void mountTable(int** table);
+void printTable(int** table, int rowSize, int colSize);
 void setRandomSeed(unsigned int value);
 int isOnTableLimit(int positionX, int positionY);
+int kbhit();
 
 int main(void) {
-    int keyBind, isOnLimit = 0, snakeChar = 219, viewChar = 32, foodChar = 206;
+    int keyBind = 0, isOnLimit = 0, snakeChar = 219, viewChar = 32, foodChar = 206;
     int snakeXLimit = 1, snakeYLimit = 1, snakeYPosition = 10, snakeXPosition = 10, foodXPosition, foodYPosition; 
     int snakeSize = 2, foodBool = 0, tailCount = 0, snakeTailX[2000], snakeTailY[2000];
 
@@ -22,7 +25,7 @@ int main(void) {
 
     while (1) {
         if (kbhit()) {
-            keyBind = getch();
+            keyBind = getchar();
         }
 
         printTable(table, 25, 50);
@@ -31,7 +34,7 @@ int main(void) {
         if (isOnLimit) {
             break;
         }
-
+        
         snakeTailX[tailCount] = snakeXPosition;
         snakeTailY[tailCount] = snakeYPosition;
         tailCount++;
@@ -71,10 +74,12 @@ int main(void) {
         table[snakeYPosition][snakeXPosition] = snakeChar;
         table[snakeYLimit][snakeXLimit] = viewChar;
 
-        system("cls");
+        usleep(110000);
+
+        system("clear");
     }
     
-    system("cls");
+    system("clear");
 
     return 0;
 }
@@ -119,4 +124,47 @@ void mountTable(int** table) {
         table[0][col] = limitChar;
         table[24][col] = limitChar;
     }
+}
+
+void printTable(int** table, int rowSize, int colSize) {
+    for (int row = 0; row < rowSize; row++) {
+        for (int col = 0; col < colSize; col++) {
+            printf("%c", table[row][col]);
+        }
+
+        printf("\n");
+    }
+}
+
+int kbhit() {
+    struct termios oldt, newt;
+    int ch;
+    int oldf;
+    fd_set readfds;
+
+    tcgetattr(STDIN_FILENO, &oldt);
+    newt = oldt;
+
+    newt.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+
+    
+    struct timeval tv;
+    tv.tv_sec = 0;
+    tv.tv_usec = 0;
+
+    FD_ZERO(&readfds);
+    FD_SET(STDIN_FILENO, &readfds);
+
+    select(STDIN_FILENO + 1, &readfds, NULL, NULL, &tv);
+    
+    if (FD_ISSET(STDIN_FILENO, &readfds)) {
+        tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+
+        return 1; 
+    }
+
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+
+    return 0; 
 }
