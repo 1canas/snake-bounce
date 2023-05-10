@@ -1,5 +1,5 @@
 # Snake Bounce 🐍
-Snake game developed in C language
+This is a simple implementation of the classic Snake Game developed in the C programming language. The game runs in the terminal and allows the player to control a snake using the arrow keys or WASD keys. The objective is to eat food (represented by a special character) and grow the snake while avoiding collisions with the walls.
 
 ### Why Snake Game? 🤔 
 During the Information Systems course, in the Fundamentals subject, we were given an exciting challenge: to develop a game using C. With a curious spark in our eyes, we couldn't resist the temptation to choose the classic Snake game and dive into the depths of this programming language
