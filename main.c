@@ -145,7 +145,6 @@ int kbhit() {
 
     newt.c_lflag &= ~(ICANON | ECHO);
     tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-
     
     struct timeval tv;
     tv.tv_sec = 0;
