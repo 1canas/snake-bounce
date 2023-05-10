@@ -5,7 +5,7 @@ This is a simple implementation of the classic Snake Game developed in the C pro
 During the Information Systems course, in the Fundamentals subject, we were given an exciting challenge: to develop a game using C. With a curious spark in our eyes, we couldn't resist the temptation to choose the classic Snake game and dive into the depths of this programming language
 
 ## Try it! ✨✨
-To play the game, simply clone the repository to your machine and execute the following commands: **make all** and then **make run**. Alternatively, you can play the game on Replit.
+To play the game, simply clone the repository to your machine and execute the following commands: **make all** and then **make run** (Best Experience). Alternatively, you can play the game on Replit.
 
 #### Cloning the Repository
 ```
@@ -23,7 +23,8 @@ make run
 #### Playing on Replit
 You can also play the game directly on Replit by [clicking here](https://replit.com/@canas11/snake-bounce?v=1).
 
-
 Enjoy the game! 🎉 
+
+<img height="400" alt="snake game print" src="https://i.ibb.co/F89X5Km/Screenshot-from-2023-05-10-14-39-18.png" />
 
 :)
