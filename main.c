@@ -4,6 +4,7 @@
 #include <termios.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <time.h>
 
 int** allocateTable();
 void mountTable(int** table);
@@ -17,9 +18,11 @@ int main(void) {
     int snakeXLimit = 1, snakeYLimit = 1, snakeYPosition = 10, snakeXPosition = 10, foodXPosition, foodYPosition; 
     int snakeSize = 2, foodBool = 0, tailCount = 0, snakeTailX[2000], snakeTailY[2000];
 
+    time_t timestamp = time(NULL);
+
     int** table = allocateTable();
 
-    setRandomSeed(snakeSize);
+    setRandomSeed(timestamp);
 
     mountTable(table);
 
