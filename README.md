@@ -25,6 +25,8 @@ You can also play the game directly on Replit by [clicking here](https://replit.
 
 Enjoy the game! 🎉 
 
-<img height="400" alt="snake game print" src="https://i.ibb.co/F89X5Km/Screenshot-from-2023-05-10-14-39-18.png" />
+<div align="center">
+  <img height="400" alt="snake game print" src= "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExODQxOTY4NThiYjdmMDQ1Yjg0NTUyYjc4ZGFmMWViYTNlZTk0ZWIwYSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/rSQ2BIZDi4sSm5599R/giphy.gif" />
+</div>
 
 :)
